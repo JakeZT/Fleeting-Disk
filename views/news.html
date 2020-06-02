@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weibo News</title>
+	<!-- Bootstrap Styles-->
+    <link href="../src/css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="../src/css/font-awesome.css" rel="stylesheet" />
+        <!-- Custom Styles-->
+    <link href="../src/css/custom-styles.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../src/css/button.css">
+</head>
+<body>
+    <div id="wrapper">
+        {{include './public/head.html'}}
+        {{include './public/side.html'}}
+
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            News <small> &nbsp &nbsp what happened today</small>
+                        </h1>
+                    </div>
+                </div> 
+                 <!-- /. ROW  -->
+                                 
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="col-md-16 col-sm-12 col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Tasks Panel
+                            </div>
+                            <a href="/news" class="refreshBtn">
+                                <div >Refresh</div>
+                            </a>
+                            <div class="panel-body">
+                            <div class="text-right">
+                                <a href="https://s.weibo.com/top/summary">Official Website <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                                <div class="list-group">
+                                    {{each list value i}}
+                                    {{if i%2==0}}
+                                    <div class="info">
+                                        <a href="{{value.link}}" class="list-group-item">
+                                            <span class="badge">latest</span>
+                                                <i class="fa fa-fw fa-globe"></i> {{value.text}}
+                                        </a>
+                                    </div>
+                                    {{else if  i%3==0}}
+                                    <div class="info">
+                                        <a href="{{value.link}}" class="list-group-item">
+                                            <span class="badge">latest</span>
+                                            <i class="fa fa-fw fa-comment"></i> {{value.text}}
+                                        </a>
+                                    </div>
+                                    {{/if}}
+                                    {{/each}}
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+              </div>
+            
+            </div>
+            </div>
+        </div>
+
+        <script src="../src/js/jquery-1.10.2.js"></script>
+        <script src="../src/js/bootstrap.min.js"></script>
+   
+</body>
+</html>

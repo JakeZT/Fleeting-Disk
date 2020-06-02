@@ -1,0 +1,24 @@
+{
+  "name": "personaldisk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jake",
+  "license": "ISC",
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "cheerio": "^1.0.0-rc.3",
+    "koa": "^2.12.0",
+    "koa-art-template": "^1.1.1",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^8.0.8",
+    "koa-session": "^6.0.0",
+    "koa-static": "^5.0.0",
+    "md5": "^2.2.1",
+    "mongodb": "^3.5.7",
+    "superagent": "^5.2.2"
+  }
+}

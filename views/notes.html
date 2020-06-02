@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Notes</title>
+	<!-- Bootstrap Styles-->
+    <link href="../src/css/bootstrap.css" rel="stylesheet" />
+     <!-- FontAwesome Styles-->
+    <link href="../src/css/font-awesome.css" rel="stylesheet" />
+        <!-- Custom Styles-->
+    <link href="../src/css/custom-styles.css" rel="stylesheet" />
+     <!-- Google Fonts-->
+     <style>
+         .noteDel-button { /* 按钮美化 */
+	width: 120px; /* 宽度 */
+	height: 30px; /* 高度 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: rgb(241, 132, 128); /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+	font-size: 15px; /* 字体大小 */
+}
+.noteDel-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: rgb(231, 61, 49);
+}
+     </style>
+</head>
+<body>
+    <div id="wrapper">
+        {{include './public/head.html'}}
+        {{include './public/side.html'}}
+
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            Notes <small>Wonderful feelings</small>
+                        </h1>
+                    </div>
+                </div> 
+                 <!-- /. ROW  -->
+                                 
+            <div class="row">
+
+                {{each list value i}}
+                {{if i%2===0}}
+                <form action="/delNotes" method="POST"  enctype="multipart/form-data">
+                    <input type="hidden" style="display: none;"  name="theme" value=" {{value[0].theme}}"></input>
+                    <input type="hidden" style="display: none;"  name="notesValue" value=" {{value[0].notes}}"></input>
+                    <div  style="width: 400px;height: 400px;margin-bottom: 100px;" class="col-md-4 col-sm-4">
+                      <div class="panel-heading col-md-4 col-sm-4" style="margin-top: -1px;margin-bottom: -1px;width: 370px;height: 50px; border:1px solid #9bdf70;background:#0ddfb1;float:left;">
+                          {{value[0].theme}}
+                      </div>
+                      <div style="overflow:auto;" style="float:left;" class="panel panel-success">
+                          <div class="panel-body" style="height: 358px;width: 368px;border:1px solid #9bdf70;overflow:auto;float:left;">
+                              <span style="overflow:auto;width: 370px;margin-bottom: -2px;">{{value[0].notes}}</span>
+                          </div>
+                      </div> 
+                      <div class="panel-footer" style="margin-top: -26px;margin-bottom: -1px;text-align: right;width: 370px;;float: left; border:1px solid #9bdf70;background:#bec5c5;">
+                        <button type="submit" onClick="return confirm('Are you sure to delete this file?');"  class="noteDel-button" style="float: left;">Delete note</button>
+                          {{value[0].timeReturn}}
+                      </div>              
+                  </div>
+                </form>
+                {{else if i%2===1}}
+                <form action="/delNotes" method="POST"  enctype="multipart/form-data">
+                    <input type="hidden" style="display: none;"  name="theme" value=" {{value[0].theme}}"></input>
+    <div  style="width: 400px;height: 400px;margin-bottom: 100px;" class="col-md-4 col-sm-4">
+        <div class="panel-heading col-md-4 col-sm-4" style="margin-top: -1px;margin-bottom: -1px;width: 370px;height: 50px; border:1px solid #9bdf70;background:#dba172;float:left;">
+            {{value[0].theme}}
+        </div>
+        <div style="overflow:auto;" style="float:left;" class="panel panel-success">
+            <div class="panel-body" style="height: 358px;width: 368px;border:1px solid #9bdf70;overflow:auto;float:left;">
+                <span style="overflow:auto;width: 370px;margin-bottom: -2px;">{{value[0].notes}}</span>
+            </div>
+        </div>
+        <div class="panel-footer" style="margin-top: -26px;margin-bottom: -1px;text-align: right;width: 370px;;float: left; border:1px solid #9bdf70;background:#bec5c5;">
+            <button type="submit" style="float: left;" onClick="return confirm('Are you sure to delete this file?');"  class="noteDel-button">Delete note</button>
+            {{value[0].timeReturn}}
+        </div>              
+    </div>
+</form>
+                {{/if}}
+
+                {{/each}}
+            </div>
+					</div>
+			 <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+        <script src="../src/js/jquery-1.10.2.js"></script>
+        <script src="../src/js/bootstrap.min.js"></script>
+   
+</body>
+</html>

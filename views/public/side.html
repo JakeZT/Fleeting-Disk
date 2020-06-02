@@ -1,0 +1,41 @@
+<nav class="navbar-default navbar-side" role="navigation">
+  <div class="sidebar-collapse">
+      <ul class="nav" id="main-menu">
+          <li>
+              <a href="/index" class="indexNav"><i class="fa fa-dashboard "></i> Dashboard</a>
+          </li>
+          <li>
+              <a href="/mediafile" class="mediafileNav"><i class="fa fa-bar-chart-o "></i> Images and Videos</a>
+          </li>
+          <li>
+              <a href="/notes" class="notesNav"><i class="fa fa-qrcode "></i> Notes</a>
+          </li>
+          <li>
+              <a href="/files" class="filesNav"><i class="fa fa-table"></i> Files</a>
+          </li>
+          <li>
+              <a href="/upload" class="uploadNav" ><i class="fa fa-edit"></i> Upload </a>
+          </li>
+          <li>
+            <a href="/news" class="newsNav" ><i class="fa fa-edit"></i> News </a>
+        </li>
+      </ul>
+  </div>
+</nav>
+
+<script>
+var active = window.location.href;
+var indexNav=document.querySelector('.indexNav');
+var mediafileNav=document.querySelector('.mediafileNav');
+var notesNav=document.querySelector('.notesNav');
+var filesNav=document.querySelector('.filesNav');
+var uploadNav=document.querySelector('.uploadNav');
+var newsNav=document.querySelector('.newsNav');
+active.indexOf('index')>0 ?indexNav.className='active-menu': '';
+active.indexOf('mediafile')>0 ?mediafileNav.className='active-menu': '';
+active.indexOf('notes')>0 ?notesNav.className='active-menu': '';
+active.indexOf('files')>0 ?filesNav.className='active-menu': '';
+active.indexOf('upload')>0 ?uploadNav.className='active-menu': '';
+active.indexOf('news')>0 ?newsNav.className='active-menu': '';
+
+</script>

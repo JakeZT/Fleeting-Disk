@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediaFiles</title>
+    <link href="../src/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/css/font-awesome.css" rel="stylesheet" />
+    <link href="../src/css/custom-styles.css" rel="stylesheet" />
+
+    <style>
+        .labelP{
+            padding: 0 0 0 0;
+            /* text-align: center; */
+            color: #08858a;
+            font-size: 12px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .originalName{
+            color:#08858a;
+        }
+        .time{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        {{include './public/head.html'}}
+        {{include './public/side.html'}}
+
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            Media Files <small> &nbsp My images&videos</small>
+                        </h1>
+                    </div>
+                </div> 
+							{{each imgList value i }}
+							<div style="width: 300px; margin-top: 30px;float: left;height: 300px;margin-left: 20px;">
+                                <a href="/{{value[0].imgPath}}">
+                                    <img title="{{value[1].originalname}}" src='{{value[0].imgPath}}' style="width: 300px;height: 300px;display: block;" alt="">
+                                </a>
+                                <p class="labelP">
+                                    <span style="float: left;" class="originalName">{{value[1].originalname}}</span>  
+                                    <span style="float: right;" class="time">Time: {{value[2].timeReturn}}</span>
+                                </p>
+                            </div>
+                            {{/each}}
+                            {{each videoList value i }}
+                            <div style="width: 300px;margin-top: 30px;margin-left:20px;float: left;height: 300px;">
+                                <video id="video1" controls width="300" height="300"   >
+                                    <source type="video/mp4" src="{{value[0].videoPath}}">
+                                    </video>
+                                    <p class="labelP">
+                                        <span style="float: left;" class="originalName">{{value[1].originalname}}</span>  
+                                        <span style="float: right;" class="time">Time: {{value[2].timeReturn}}</span>
+                                    </p>
+                            </div>
+                            {{/each}}
+				</div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>        
+<script>
+ let pathValue=`{{list}}`;
+ console.log(pathValue);   
+</script>
+     <!-- /. WRAPPER  -->
+     <script src="../src/js/jquery-1.10.2.js"></script>
+     <script src="../src/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+.file {
+  position: relative;
+  display: inline-block;
+  background: #D0EEFF;
+  border: 1px solid #99D3F5;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #1E88C7;
+  /* text-decoration: none; */
+  text-indent: 0;
+  line-height: 20px;
+}
+.fileToSelect{
+  position:relative;
+  display:inline-block;
+  background:#D0EEFF;
+  border:1px solid #99D3F5;
+  padding:5px 20px;
+  border-radius:4px;
+  overflow:hidden;
+  color:#1E88C7;
+  text-decoration:none;
+  text-indent:0;
+  line-height:20px;
+}
+.fileToSelect input{
+
+  position:absolute;
+  /* 防止在各浏览器中上传按钮的显示不同,给上传按钮设置文字大小 */
+  font-size:100px;
+  /* 解决IE中无法靠近边缘问题 */
+  right:-5px;
+  top:-5px;
+  /* 设置透明度为0,针对非IE浏览器或高版本IE浏览器*/
+  opacity:0;
+  /* 设置透明度为0,这里针对低版本IE浏览器 */
+  filter:alpha(opacity=0);
+  cursor:pointer;
+}
+.fileToSelect:hover{
+  background:#AADFFD;
+  border-color:#78C3F3;
+  color:#004974;
+  text-decoration:none;
+}
+#textId{
+display: inline-block;
+/* background-color: rgb(92, 219, 192); */
+opacity: 0.9;
+  width:180px;
+  height:30px;
+  color: rgb(12, 170, 149);
+  border:1px solid #f1f1f1;
+  border-radius:4px;
+  vertical-align:top;
+  /* border-radius: 20px; */
+}
+#textId2{
+  display: inline-block;
+  /* background-color: rgb(92, 219, 192); */
+  opacity: 0.9;
+    width:180px;
+    height:30px;
+    color: rgb(12, 170, 149);
+    border:1px solid #f1f1f1;
+    border-radius:4px;
+    vertical-align:top;
+    /* border-radius: 20px; */
+  }
+.file input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+.file:hover {
+  background: #AADFFD;
+  border-color: #78C3F3;
+  color: #004974;
+  /* text-decoration: none; */
+}
+
+.del {
+  position: relative;
+  display: inline-block;
+  background: rgb(233, 94, 76);
+  border: 1px solid rgb(219, 110, 95);
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: rgb(232, 235, 236);
+  text-decoration: none;
+  text-indent: 0;
+  line-height: 20px;
+}
+.del input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+.del:hover {
+  background: #ec0606;
+  border-color: #ec0606;
+  color: rgb(232, 235, 236);
+  text-decoration: none;
+}
+.view {
+  position: relative;
+  display: inline-block;
+  background: #06beec;
+  border: 1px solid #06beec;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: rgb(232, 235, 236);
+  text-decoration: none;
+  text-indent: 0;
+  line-height: 20px;
+}
+.view input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+.view:hover {
+  background: #0662ec;
+  border-color: #0662ec;
+  color: rgb(232, 235, 236);
+  text-decoration: none;
+}

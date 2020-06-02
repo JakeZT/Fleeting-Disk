@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload</title>
+    <link href="../src/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/css/font-awesome.css" rel="stylesheet" />
+    <link href="../src/css/custom-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/css/droptoupload.css">
+    <link rel="stylesheet" href="../src/css/button.css">
+</head>
+<body>
+    <div id="wrapper">
+        {{include './public/head.html'}}
+        {{include './public/side.html'}}
+
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            Upload Files <small> Include videos</small>
+                        </h1>
+                    </div>
+                </div> 
+                 <!-- /. ROW  -->
+              <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Files to upload 
+                        </div>
+                        <div class="panel-body">
+                                <div class="col-lg-12">
+            <!-- ---------------------------------Form-------------------------------- -->
+                                    <form action="/upload/files" method="POST"  enctype="multipart/form-data">
+                                        <input type="hidden" style="display: none;"  name="sessionID" value="{{username}}"></input>
+                                        <div class="form-group">
+                                            <label>Theme</label>
+                                            <input type="text" name="theme" maxlength="50" class="form-control" maxlength="40" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Text area</label>
+                                            <textarea  style="resize:none;" type="text" rows="10" name="notes" id="inputCheck" class="form-control " rows="3"></textarea>
+                                            <div><span id="showNumber"></span></div>
+                                            
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <a href="javascript::(0)" class="fileToSelect">Select My File
+                                                <input type="file" name="file1" onchange="document.getElementById('textId').value=this.value">
+                                              </a>
+                                              <input type="text" id="textId" placeholder="&nbsp &nbsp &nbsp ⬅The File Path">
+                                        </div>
+                                        <div class="form-group">
+                                            <a href="javascript::(0)" class="fileToSelect">Select My File 
+                                                <input type="file" name="file2" onchange="document.getElementById('textId2').value=this.value">
+                                              </a>
+                                              <input type="text" id="textId2" placeholder="&nbsp &nbsp &nbsp ⬅The File Path">
+                                        </div>
+                                        <!--  -->
+                                        <div class="form-group">
+                                            <img src="" style="width: 200px; height: 200px;" class="imgToShow1" alt="">
+                                        </div>
+                                        <!-- <button type="submit" class="submitCSS" style="width:100px; height:30px;">Submit</button> -->
+                                        <button type="submit" class=" buttonAutoSubmit" id="submitAllProcess"  style="margin-left: -10px;background-color: rgb(23, 112, 214);" >Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			</div>
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+        <script>
+            // 显示临时图片
+            let imgToShow=document.querySelector('.imgToShow');
+		    let preview=document.querySelector('.preview');
+		    preview.addEventListener('change',()=>{
+			let objFile=preview.files[0];
+			let url=URL.createObjectURL(objFile);
+			imgToShow.src=url;
+            })
+        
+            let imgToShow1=document.querySelector('.imgToShow1');
+		    let preview1=document.querySelector('.preview1');
+		    preview1.addEventListener('change',()=>{
+			let objFile=preview1.files[0];
+			let url=URL.createObjectURL(objFile);
+			imgToShow1.src=url;
+            })
+
+            var ppl=170//每条长
+            var maxl=3000//总长
+            let inputCheck=document.getElementById("inputCheck");
+            document.onkeyup=function(){
+            var textNumber=inputCheck.value.length;
+            if(textNumber>maxl)inputCheck.value=inputCheck.value.substr(0,maxl-1)
+            else document.getElementById("showNumber").innerHTML="Text : "+textNumber+"/"+maxl;
+            }
+        </script>
+
+        <script src="../src/js/jquery-1.10.2.js"></script>
+        <script src="../src/js/bootstrap.min.js"></script>
+   
+</body>
+</html>

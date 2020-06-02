@@ -1,0 +1,99 @@
+<!DOCTYPE >
+<html>
+<head>
+    <title>userInfo Setting</title>
+    <link href="../src/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/css/font-awesome.css" rel="stylesheet" />
+    <link href="../src/css/custom-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./../src/css/login.css">
+    <link rel="stylesheet" href="./../src/css/basic.css">
+    <link rel="stylesheet" href="../src/css/button.css">
+<style>
+    .userImg input {
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0;/*关键点*/
+  filter: alpha(opacity=0);/*兼容ie*/
+  font-size: 100px;/* 增大不同浏览器的可点击区域 */
+  cursor: pointer;
+  background-color: aquamarine;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <form class="form-horizontal" action="/updateInfo" method="POST"  enctype="multipart/form-data" >
+                <span class="heading">Update Information</span>
+                <h4 style="height: 50px;"> <a href="/index">Back to my Fleeting Disk </a></h4>
+                <div style="margin:auto;width: 200px; height: 200px; border-radius: 50%;" >
+                        <img src="{{imgPath}}" style="object-fit:cover;width: 200px; height: 200px; border-radius: 50%;" class="imgToShow" alt="">
+                </div>
+                <a href="javascript:;" class="file" style="margin-top:30px;">Select your Icon
+                    <input type="file" name="userImg" class="preview" id="upload-ipt">
+                </a>
+                <div class="form-group" style="margin-top: 50px;">
+                    <input type="text" name="username" value="{{username}}" class="form-control" id="inputEmail3" placeholder="username">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group help">
+                    <input type="password"  name="password" class="form-control typePassword" id="inputPassword3" placeholder="password">
+                    <i class="fa fa-lock"></i>
+                    <a href="#" class="fa fa-question-circle"></a>
+                </div>
+                <div class="form-group help">
+                    <input type="password"  name="password" class="form-control typePassword2" id="inputPassword4" placeholder="Re-enter password">
+                    <i class="fa fa-lock"></i>
+                    <a href="#" class="fa fa-question-circle"></a>
+                </div>
+                <div class="form-group">
+                    <div class="main-checkbox">
+                        <input type="checkbox" value="None" id="checkbox1" name="check"/>
+                        <label for="checkbox1"></label>
+                    </div>
+                    <span class="text">Remember me</span>
+                    <button type="button" id="clickToGo" class="btn btn-default ">Reset</button>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    let button=document.getElementById('clickToGo');
+    button.addEventListener('click',()=>{
+        let password=document.querySelector('.typePassword').value;
+        let password2=document.querySelector('.typePassword2').value;
+       let reset=()=>{
+            window.location.reload();
+        }
+        if(password===''){
+            alert('Password can not be empty!')
+        }else if(password!==password2){
+            alert('Please enter the same password');
+            window.location.reload();
+
+        }else{
+                let Confirm=confirm('Are you sure to reset information?');
+                Confirm== true? button.setAttribute('type', "submit") : reset();
+            }
+           
+        
+})
+
+</script>
+<script>
+                // 显示临时图片
+                let imgToShow=document.querySelector('.imgToShow');
+		    let preview=document.querySelector('.preview');
+		    preview.addEventListener('change',()=>{
+			let objFile=preview.files[0];
+			let url=URL.createObjectURL(objFile);
+			imgToShow.src=url;
+            })
+            
+</script>
+</body>
+</html>

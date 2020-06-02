@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fleeting Drive</title>
+    <link href="../src/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/css/font-awesome.css" rel="stylesheet" />
+    <link href="../src/css/custom-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/css/dropzone.css">
+    <link rel="stylesheet" href="../src/css/droptoupload.css">
+    <script src="../src/js/dropzone.js"></script>
+    <script src="../src/js/jquery-1.10.2.js"></script>
+    <script src="../src/js/bootstrap.min.js"></script>
+     
+</head>
+
+<body>
+    <div id="wrapper">
+
+        {{include './public/head.html'}}
+        {{include './public/side.html'}}
+
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            Dashboard <small>My Disk Info</small>
+                        </h1>
+						<ol class="breadcrumb">
+                        <li>Home</li>
+                        <li>Library</li>
+                        <li class="active"><a href="/files">My Disk</a></li>
+                        </ol>
+                    </div>
+                </div>
+
+                    <a href="/mediafile">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <div class="panel panel-primary text-center no-boder bg-color-green green">
+                                    <div class="panel-left pull-left green">
+                                        <i class="fa fa-picture-o fa-5x"></i>
+                                        
+                                    </div>
+                                    <div class="panel-right">
+                                        <h3>{{images}}</h3>
+                                       <strong> Images</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+
+                    <a href="/mediafile">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="panel panel-primary text-center no-boder bg-color-blue">
+                                  <div class="panel-left pull-left blue">
+                                    <i class="fa fa-video-camera fa-5x"></i>
+                                    </div>
+                                    
+                                <div class="panel-right">
+                                <h3>{{videos}} </h3>
+                                   <strong> Videos</strong>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/notes">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="panel panel-primary text-center no-boder bg-color-red">
+                                <div class="panel-left pull-left red">
+                                    <i class="fa fa fa-comment fa-5x"></i>
+                                   
+                                </div>
+                                <div class="panel-right">
+                                 <h3>{{notes}}</h3>
+                                   <strong> Notes</strong>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/files">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="panel panel-primary text-center no-boder bg-color-brown">
+                                <div class="panel-left pull-left brown">
+                                    <i class="fa fa-file fa-5x"></i>
+                                    
+                                </div>
+                                <div class="panel-right">
+                                <h3>{{pdf}}</h3>
+                                 <strong>Files</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+				
+
+                <div class="form-group" style="margin-top: 50px;">
+                    <form action="/dropToUpload" id="buldUploadForm" enctype="multipart/form-data" method="post">
+                        <div class="dropzone dz-clickable" id="uploadDropzone">
+                           <div class="dz-default dz-message dropZoneHere" data-dz-message="">
+                              <span class="DropFile">Drop files here to upload(Max 4)</span>
+                              <div class="DropFileText">+</div>
+                           </div>
+                        </div>
+                        <br />
+                        <button type="submit" class=" buttonAutoSubmit" id="submitAllProcess"  name="submit" >Upload</button>
+                      </form>
+                </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <script>
+        Dropzone.autoDiscover = false;
+      
+      function paramNameForSend() {
+         return "userParamName";
+      }
+      
+      $(document).ready(function() {
+        var myDropzone = new Dropzone("#uploadDropzone", {
+          url: '/dropToUpload',
+          maxFilesize: 5, // MB
+          maxFiles: 4,
+          autoProcessQueue: false,
+          uploadMultiple: true,
+          paramName: paramNameForSend,
+          method: 'post',
+          parallelUploads: 10,
+          init: function() {
+              var myDropzone = this;
+      
+              $("#buldUploadForm").submit(function (e) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  myDropzone.processQueue();
+              }); 
+            }
+          });
+      });
+      </script>
+    <script>
+let submitAllProcess=document.getElementById('submitAllProcess');
+submitAllProcess.addEventListener('click', ()=>{
+    let FileExit=document.querySelector('.dz-preview');
+            if(FileExit===null){
+                alert('There\'s no file to upload')
+            }else{
+                let timer=window.setTimeout(()=>{
+           let Alert=alert('Upload Successfully')
+            window.location.reload();
+        },800);
+            }
+        });
+    </script>
+	 
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Files</title>
+    <link href="../src/css/bootstrap.css" rel="stylesheet" />
+    <link href="../src/css/font-awesome.css" rel="stylesheet" />
+    <link href="../src/css/custom-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./../src/css/button.css">
+</head>
+<body>
+    <div id="wrapper">
+        {{include './public/head.html'}}
+        {{include './public/side.html'}}
+
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			 <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            Tables Page <small>Files</small>
+                        </h1>
+                    </div>
+                </div> 
+               
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                     My Files List
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th> Files Index</th>
+                                            <th> Files Name</th>
+                                            <th> File Type</th>
+                                            <th> Preview</th>
+                                            <th> Download</th>
+                                            <th> Delete</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody class="dynamic">
+                                            {{each fileArray value i}}
+                                            <tr class="odd gradeX">
+                                                <td>{{i+1}}</td>
+                                                <td>{{value[3].originalname}}</td>
+                                                <td>{{value[1].fileType}}</td>
+                                                <td class="center">                                             
+                                                    <a href="/{{value[2].filePath}}" class="view">View
+                                                        <input type="button" name="" id="">
+                                                    </a>
+                                                </td>
+                                                <td class="center">                                             
+                                                    <a href="/download/{{value[2].filePath}}" class="file">Download
+                                                        <input type="button" name="" id="">
+                                                    </a>
+                                                </td>
+                                                <td class="center">                                             
+                                                    <a href="/deleteFile/{{value[2].filePath}}" onClick="return confirm('Are you sure to delete this file?');"   id="makeSure" class="del">Delete
+                                                        <input type="button"  name="" id="">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+            </div>
+            <script src="../src/js/jquery-1.10.2.js"></script>
+            <script src="../src/js/bootstrap.min.js"></script>
+</body>
+</html>

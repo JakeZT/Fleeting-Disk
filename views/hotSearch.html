@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Crawler</title>
+</head>
+<body>
+    <button id="refresh" style="color:brown; background-color: aqua;">Refresh News</button>
+    <h1 class="show" style="display: none;">Searched Result</h1>
+    <h2 class="title" style="display:block ;">Searching Hot News...</h2>
+    <script>
+        var show=document.querySelector('.show');
+        var title=document.querySelector('.title');
+        setTimeout(()=>{
+            show.style.display="block";
+            title.style.display="none";
+            let info=`
+                        {{each list value i}}
+                        <div class="info">{{i}}:&nbsp &nbsp <a href="{{value.link}}">{{value.text}}</a> <br/></div>
+                        {{/each}}
+                     `;
+        var result = document.createElement('div');
+        result.innerHTML=info;
+        document.querySelector('.show').after(result);
+                },150)
+            
+        var button=document.getElementById('refresh');
+        button.addEventListener('click', ()=>{location.reload();})
+
+    </script>
+</body>
+</html>
